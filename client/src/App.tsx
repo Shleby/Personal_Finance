@@ -1,18 +1,18 @@
-import React from 'react';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import SwipeableViews from "react-swipeable-views";
+import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-import Overview from './components/Overview';
-import NetWorth from './components/NetWorth';
-import TaxForcaster from './components/TaxForcaster';
-import ExpenseTracker from './components/ExpenseTracker';
-import MonthlyBudget from './components/MonthlyBudget';
-import FireProgress from './components/FireProgress';
+import Overview from "./components/Overview";
+import NetWorth from "./components/NetWorth";
+import TaxForcaster from "./components/TaxForcaster";
+import ExpenseTracker from "./components/ExpenseTracker";
+import MonthlyBudget from "./components/MonthlyBudget";
+import FireProgress from "./components/FireProgress";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,20 +44,21 @@ function TabPanel(props: TabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: "#becfc2",
+    height: "100vh",
   },
   indicator: {
-    backgroundColor: 'rgb(0, 102, 9)',
+    backgroundColor: "rgb(0, 102, 9)",
   },
   tabText: {
-    color: 'rgb(0, 102, 9)',
-  }
+    color: "rgb(0, 102, 9)",
+  },
 }));
 
 export default function App() {
@@ -81,7 +82,7 @@ export default function App() {
           onChange={handleChange}
           classes={{
             indicator: classes.indicator,
-            root: classes.tabText
+            root: classes.tabText,
           }}
         >
           <Tab label="Overview" {...a11yProps(0)} />
@@ -89,30 +90,30 @@ export default function App() {
           <Tab label="Tax Forcaster" {...a11yProps(2)} />
           <Tab label="Expense Tracker" {...a11yProps(3)} />
           <Tab label="Monthly Budget" {...a11yProps(4)} />
-          <Tab label="FIRE Progress" {...a11yProps(5)} style={{ width: "20px"}}/>
+          <Tab label="FIRE Progress" {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0}>
           <Overview />
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
+        <TabPanel value={value} index={1}>
           <NetWorth />
         </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
+        <TabPanel value={value} index={2}>
           <TaxForcaster />
         </TabPanel>
-        <TabPanel value={value} index={3} dir={theme.direction}>
+        <TabPanel value={value} index={3}>
           <ExpenseTracker />
         </TabPanel>
-        <TabPanel value={value} index={4} dir={theme.direction}>
+        <TabPanel value={value} index={4}>
           <MonthlyBudget />
         </TabPanel>
-        <TabPanel value={value} index={5} dir={theme.direction}>
+        <TabPanel value={value} index={5}>
           <FireProgress />
         </TabPanel>
       </SwipeableViews>
